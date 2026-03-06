@@ -1,0 +1,100 @@
+﻿<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>中国象棋 H5</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app">
+    <header class="topbar">
+      <div class="player-card">
+        <div class="avatar">
+          <span id="name-black">黑方</span>
+        </div>
+        <div class="rank">新手</div>
+        <div class="clock" id="clock-black">10:00</div>
+      </div>
+      <div class="actions">
+        <button id="btn-sound" aria-label="音效">🔊</button>
+        <button id="btn-settings" aria-label="设置">⚙</button>
+        <button id="btn-undo" aria-label="悔棋">↶</button>
+      </div>
+    </header>
+
+    <main class="board-area">
+      <div class="board-shell">
+        <canvas id="board"></canvas>
+      </div>
+    </main>
+
+    <footer class="bottombar">
+      <div class="player-card">
+        <div class="avatar me">
+          <span id="name-red">红方</span>
+        </div>
+        <div class="rank">新手</div>
+        <div class="clock" id="clock-red">10:00</div>
+      </div>
+      <div class="hint" id="hint">红方先走</div>
+    </footer>
+  </div>
+
+  <div class="settings-overlay" id="settings-overlay" aria-hidden="true">
+    <div class="settings-panel" role="dialog" aria-modal="true" aria-label="设置">
+      <div class="settings-header">
+        <div class="settings-title">设置</div>
+        <button id="btn-close" aria-label="关闭">✕</button>
+      </div>
+      <div class="settings-body">
+        <div class="segment">
+          <div class="segment-title">模式</div>
+          <div class="segment-options two" id="mode-options">
+            <button data-mode="ai" class="segment-btn">人机</button>
+            <button data-mode="pvp" class="segment-btn">双人</button>
+          </div>
+        </div>
+        <div class="segment" id="difficulty-group">
+          <div class="segment-title">难度</div>
+          <div class="segment-options" id="level-options">
+            <button data-level="1" class="segment-btn">1</button>
+            <button data-level="2" class="segment-btn">2</button>
+            <button data-level="3" class="segment-btn">3</button>
+            <button data-level="4" class="segment-btn">4</button>
+            <button data-level="5" class="segment-btn">5</button>
+          </div>
+        </div>
+        <div class="segment">
+          <div class="segment-title">玩家名字</div>
+          <div class="name-row">
+            <label>
+              红方
+              <input id="input-red" type="text" maxlength="6" placeholder="红方" />
+            </label>
+            <label>
+              黑方
+              <input id="input-black" type="text" maxlength="6" placeholder="黑方" />
+            </label>
+          </div>
+        </div>
+        <div class="settings-actions">
+          <button id="btn-swap">换边</button>
+          <button id="btn-new">开始新局</button>
+          <button id="btn-close-bottom">返回对弈</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="result-overlay" id="result-overlay" aria-hidden="true">
+    <div class="result-panel" role="alert">
+      <div class="result-title" id="result-title">胜负已分</div>
+      <div class="result-sub" id="result-sub">红方胜</div>
+      <button id="btn-result-close">继续</button>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
